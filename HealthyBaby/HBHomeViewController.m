@@ -28,6 +28,7 @@
     self.tableView = [[UITableView alloc] init];
 //    self.tableView.indicatorStyle=UIScrollViewIndicatorStyleBlack;
 //    self.tableView.separatorStyle=NO;
+   
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
@@ -88,9 +89,35 @@
         {
             cell = [tableView dequeueReusableCellWithIdentifier:contentCellId];
             if (!cell) {
+                
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:contentCellId];
+                UIImageView *iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon.png"]];
+                iconImageView.frame = CGRectMake(10, 0, 40, 40);
+                [cell.contentView addSubview:iconImageView];
+                
+                UILabel *usernameLab = [UILabel new];
+                usernameLab.text = @"大内高手";
+                usernameLab.font = [UIFont systemFontOfSize:16];
+                usernameLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMinY(iconImageView.frame), 100, 20);
+                
+                UILabel *distanceLab = [UILabel new];
+                distanceLab.text = @"100m";
+                distanceLab.font = [UIFont systemFontOfSize:14];
+                distanceLab.textColor = [UIColor grayColor];
+                distanceLab.frame = CGRectMake(CGRectGetMaxX(usernameLab.frame) + 20, 0, 60, 20);
+                [cell.contentView addSubview:distanceLab];
+                
+                [cell.contentView addSubview:usernameLab];
+                
+                UILabel *statusLab = [UILabel new];
+                statusLab.text = @"感冒，发烧，健康";
+                statusLab.textColor = [UIColor grayColor];
+                statusLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMaxY(distanceLab.frame) + 5, 100, 20);
+                [cell.contentView addSubview:statusLab];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            cell.textLabel.text = @"dsfdfs";
+            
             break;
         }
             
@@ -114,7 +141,7 @@
             height = 64;
             break;
         default:
-            height = 40;
+            height = 80;
             break;
     }
     return height;
