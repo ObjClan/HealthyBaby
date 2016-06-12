@@ -1,0 +1,23 @@
+//
+//  HBPrefixHeader.pch
+//  HealthyBaby
+//
+//  Created by jszx on 16/6/1.
+//  Copyright © 2016年 objectlan. All rights reserved.
+//
+
+#ifndef HBPrefixHeader_pch
+#define HBPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* HBPrefixHeader_pch */
+
+#ifndef HBHomeBannerHeight
+#define HBHomeBannerHeight 160
+#endif
+
+#ifndef HBScreenWidth
+#define HBScreenWidth [UIScreen mainScreen].bounds.size.width
+#endif
