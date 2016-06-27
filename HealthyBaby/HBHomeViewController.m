@@ -33,7 +33,6 @@
     [self.view addSubview:self.tableView];
     
     self.homeNavBar = [[HBHomeBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 64)];
-    self.homeNavBar.userInteractionEnabled = NO;
     self.navigationController.navigationBar.hidden = YES;
     self.delegateSplitter = [[BLKDelegateSplitter alloc] initWithFirstDelegate:self.homeNavBar.behaviorDefiner secondDelegate:self];
     self.tableView.delegate = (id<UITableViewDelegate>)self.delegateSplitter;
@@ -92,19 +91,19 @@
                 
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:contentCellId];
                 UIImageView *iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon.png"]];
-                iconImageView.frame = CGRectMake(10, 0, 40, 40);
+                iconImageView.frame = CGRectMake(10, 10, 40, 40);
                 [cell.contentView addSubview:iconImageView];
                 
                 UILabel *usernameLab = [UILabel new];
                 usernameLab.text = @"大内高手";
                 usernameLab.font = [UIFont systemFontOfSize:16];
-                usernameLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMinY(iconImageView.frame), 100, 20);
+                usernameLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMinY(iconImageView.frame), 100, 16);
                 
                 UILabel *distanceLab = [UILabel new];
-                distanceLab.text = @"100m";
+                distanceLab.text = [@"100" stringByAppendingString:@"m"];
                 distanceLab.font = [UIFont systemFontOfSize:14];
                 distanceLab.textColor = [UIColor grayColor];
-                distanceLab.frame = CGRectMake(CGRectGetMaxX(usernameLab.frame) + 20, 0, 60, 20);
+                distanceLab.frame = CGRectMake(CGRectGetMaxX(usernameLab.frame) + 100, 10, 60, 14);
                 [cell.contentView addSubview:distanceLab];
                 
                 [cell.contentView addSubview:usernameLab];
@@ -112,7 +111,9 @@
                 UILabel *statusLab = [UILabel new];
                 statusLab.text = @"感冒，发烧，健康";
                 statusLab.textColor = [UIColor grayColor];
-                statusLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMaxY(distanceLab.frame) + 5, 100, 20);
+                statusLab.numberOfLines = 0;
+              
+                statusLab.frame = CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10, CGRectGetMaxY(distanceLab.frame) + 10, 200, 17);
                 [cell.contentView addSubview:statusLab];
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
